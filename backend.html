@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend</title>
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        #form{
+          margin-top: 30px;
+
+        }
+        #form>input{
+            display: block;
+            margin: auto;
+            margin-top: 5px;
+            padding: 5px;
+        }
+        #btn{
+            cursor: pointer;
+            background-color: blue;
+            color: white;
+            font-size: 15px;
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+<body>
+    <div id="navBar">
+        <h2><a href="frontend.html"> Frontend</a></h2>
+        <h2><a href="backend.html"> Backebnd</a></h2>
+    </div>
+
+    <form action="" id="form">
+        <input id="name" type="text" placeholder="Enter your Name">
+        <input id="image" type="text" placeholder="Image URL">
+        <input id="logo" type="text" placeholder="Company Logo">
+        <input id="role" type="text" placeholder="Role">
+        <input id="btn" type="submit">
+    </form>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",jobSubmit)
+    var jobArr=JSON.parse(localStorage.getItem("applicantData")) || []
+    function jobSubmit(){
+            event.preventDefault()
+        var jobData={
+            personName:form.name.value,
+            personImage:form.image.value,
+            companyLogo:form.logo.value,
+            personRole:form.role.value,
+        }
+       jobArr.push(jobData)
+        localStorage.setItem("applicantData",JSON.stringify(jobArr))
+        window.location.href="frontend.html"
+    }
+</script>

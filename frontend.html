@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend</title>
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        #container{
+           
+            width: 100%;
+            display: grid;
+            margin-top: 30px;
+            margin-left: 10px;
+            grid-template-columns: repeat(5,1fr);
+           gap: 20px;
+
+           
+
+        }
+        #container >div{
+            width: 220px;
+            height: auto;
+            text-align: center;
+            font-size: 17px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 10px;
+        }
+        p{
+            color: rgb(100, 97, 97);
+        }
+        #logo{
+            height: 40px;
+        }
+        #pic{
+            height: 200px;
+            width: 100%;
+            border-radius: 10px;
+        }
+        h1{
+            text-align: center;
+            margin-top: 10px;
+            font-size: 40px;
+        }
+       
+    </style>
+</head>
+<body>
+    <div id="navBar">
+        <h2><a href="frontend.html"> Frontend</a></h2>
+        <h2><a href="backend.html"> Backebnd</a></h2>
+    </div>
+    <h1>Masai Investors</h1>
+   <div id="container">
+
+   </div>
+</body>
+</html>
+<script>
+    var jobArr=JSON.parse(localStorage.getItem("applicantData"))
+    
+    jobArr.forEach(function(elem){
+        var box=document.createElement("div")
+
+        var image=document.createElement("img")
+        image.setAttribute("src",elem.personImage)
+        image.setAttribute("id","pic")
+
+        var name=document.createElement("h3")
+        name.innerText=elem.personName;
+
+        var role=document.createElement("p")
+        role.innerText=elem.personRole;
+
+        var logo=document.createElement("img")
+        logo.setAttribute("src",elem.companyLogo)
+        logo.setAttribute("id","logo")
+
+        box.append(image,name,role,logo)
+        document.querySelector("#container").append(box)
+    })
+    
+</script>
